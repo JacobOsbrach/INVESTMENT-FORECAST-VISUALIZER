@@ -4,7 +4,7 @@ The application displays static reports of year-end balances and year-end earned
 
 What did you do particularly well?
 
-I did a good job on the actual algorithm and implementing basic OOP concepts.
+I did a good job on the actual algorithm and implementing basic OOP concepts. I also didn't do too bad when making a simple, easy to user program.
 
 
 Where could you enhance your code? How would these improvements make your code more efficient, secure, and so on?
