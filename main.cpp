@@ -1,147 +1,138 @@
 #include "pch.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-/* Jacob Osbrach, October 24 2023 */
+// Jacob Osbrach, 11/18/2023
 
-/* The purpose of this activty is to prompt a user for his/her input to create a clock in a 12-hour & AM/PM format */
+// Purpose of this programs is to build a shopping calculate and calculate costs using OOP
 
-int m = 0, s = 0;
-int input = 0;
-int inputH = 0;
-int inputM = 0;
-int inputS = 0;
-int newH1 = 0;
-int newH = 0;
+double a, b, c, d, e, t;
+int m;
+double amount = 0;
+double initial = 0;
+double amountTwo = 0;
+double initialTwo = 0;
+double InterestCheck;
+double totalcheck;
+double totalcheckTwo;
+int yearcheck;
+double yearsEarned;
 
 
-void time() /* This function ensures that the regular time (AM/PM) is calculated */
-{
-    while (newH >= 24)
+
+// this calculates the balance and interest using user input
+void calculateall() {
+
+    Item calculate(a, b, c, d);
+    // sets the variables into the the main method from getters and setters 
+    calculate.setInitial(a);
+    calculate.setDeposit(b);
+    calculate.setInterest(c);
+    calculate.setYears(d);
+
+    // these grab vairables from the getters once user input has been validated
+    double InterestCheck = calculate.getInterest();
+    double totalcheck = calculate.getInitial();
+    double totalcheckTwo = calculate.getInitial();
+    double depositCheck = calculate.getDeposit();
+    int yearcheck = calculate.getYears();
+
+    // loop to calculate based on years. Also doubles the years to trigger the second IF statement and run calculations 
+    for (int m = 1; m <= 2 * calculate.getYears(); m++)
     {
-        newH1 = newH1 - 12;
-        newH = newH - 24;
-    }
-
-    if (newH < 12)
-    {
-        cout << "**********************\n";
-        cout << "* regular:  " << newH1 << ":" << m << ":" << s << " AM *" << "\n";
-        cout << "**********************\n";
-    }
-    else if (newH > 12)
-    {
-        newH1 = newH - 12;
-        cout << "**********************\n";
-        cout << "* regular:  " << newH1 << ":" << m << ":" << s << " PM *" << "\n";
-        cout << "**********************\n";
-    }
-    else {
-        cout << "**********************\n";
-        cout << "* regular:  " << newH1 << ":" << m << ":" << s << " PM *" << "\n";
-        cout << "**********************\n";
-    }
-}
-
-void twelveHour() /* This function resets the 12-hour time */
-{
-    while (newH >= 24) /* Every time the day resets it subtracts 24, this allows a user to keep adding time */
-    {
-        newH = newH - 24;
-    }
-        cout << "****************************\n";
-        cout << "* Twelve hour time:  " << newH << ":" << m << ":" << s << " *" << "\n";
-        cout << "****************************\n";
-}
-
-void call()
-{
-    cout << "Here is the current time: ";
-
-    cout << newH << ":" << m << ":" << s << "\n\n"; /* displays null time */
-
-    cout << "Enter a new time (in 12-hour format)\n\n";
-
-    /* collecting user input */
-    cout << "hours: ";
-    cin >> newH;
-    cout << "minutes: ";
-    cin >> m;
-    cout << "Seconds: ";
-    cin >> s;
-    cout << "\n";
-
-    newH1 = newH;
-
-    /* calls functions to calculate both times */
-    time(); 
-    twelveHour();
-}
-
-
-void callTwo()
-{
-    bool exit = false;
-    while (exit = true) /* while loop to keep the proccess going */
-    {
-        /* displays menu */
-        cout << "\n       Add time?\n\n";
-
-        cout << "**********************\n";
-
-        cout << "*   1: Add hours     *\n" << "*   2: Add Minutes   *\n" << "*   3: Add Seconds   *\n" << "*   4: exit          *\n";
-
-        cout << "**********************\n\n";
-        
-        cout << "Selection: ";
-
-
-        /* collects user input for menu and calls functions */
-        cin >> input;
-        if (input == 1)
+        if (m <= yearcheck) // first calculates with monlthy deposites
         {
-            cout << "\nHours: ";
-            cin >> inputH;
-            newH = inputH + newH;
-            newH1 = inputH + newH1;
-            cout << "\n";
-            /* calls functions to calculate both times */
-            time();
-            twelveHour();
+            yearsEarned = 0; // resets so new year can be calculated
+            for (int l = 1; l <= 12; l++)
+            {
+
+
+                amount = (totalcheck + depositCheck) * (InterestCheck / 12); // calculates interest
+
+                totalcheck = amount + totalcheck + depositCheck; // takes the calculated interest and adds it to the deposit
+
+                yearsEarned = yearsEarned + amount; // adds up yearly earned interest
+
+                if (l == 12)
+                {
+                    cout << "      " << m << "         " << fixed << setprecision(2) << totalcheck; cout << "                   ";
+                    cout << yearsEarned; cout << "\n";
+                }
+            }
         }
-        if (input == 2)
+
+        if (m >= 2 * yearcheck) // triggers after the calculation with monthly deposits is finished
         {
-            cout << "\nMinutes: ";
-            cin >> inputM;
-            m = inputM + m;
-            cout << "\n";
-            /* calls functions to calculate both times */
-            time();
-            twelveHour();
+            cout << "\n\n   Balance and interest without additional Monthly Deposites\n";
+            cout << "  ===========================================================\n";
+            cout << "    year    " << "year and balance       " << "Year and Earned Interest\n";
+            cout << "  ===========================================================\n";
+            for (int u = 1; u <= calculate.getYears(); u++)
+            {
+                amountTwo = totalcheckTwo * InterestCheck;
+                totalcheckTwo = amountTwo + totalcheckTwo;
+
+                cout << "      " << u << "         " << fixed << setprecision(2) << totalcheckTwo; cout << "                      ";
+                cout << amountTwo; cout << "\n";
+            }
         }
-        if (input == 3)
-        {
-            cout << "\nSeconds: ";
-            cin >> inputS;
-            s = inputS + s;
-            cout << "\n";
-            /* calls functions to calculate both times */
-            time();
-            twelveHour();
-        }
-        if (input == 4)
-        {
-            cout << "\nHave a good day\n\n";
-            break; /* exists the loop */
-        }
+
+
+
     }
-
 }
 
-int main() { /* Calls both functions, user input and menu loop */
 
-    call();
 
-    callTwo();
+// this asks for user input
+void userInput() {
+    cout << "**************************\n";
+    cout << "****** Data Input ********\n";
+    cout << "Initial investment amount:\n";
+    cin >> a;
+    cout << "Monthly Deposit:\n";
+    cin >> b;
+    cout << "Annual Interest:\n";
+    cin >> t;
+    cout << "Number of years:\n";
+    cin >> d;
+
+    c = t / 100;
+
+
+    Item calculate(a, b, c, d);
+
+
+    // sets the variables into getters and setters 
+    calculate.setInitial(a);
+    calculate.setDeposit(b);
+    calculate.setInterest(c);
+    calculate.setYears(d);
+
+    // these grab vairables from the getters once user input has been validated
+    double InterestCheck = calculate.getInterest();
+    double totalcheck = calculate.getInitial();
+    double totalcheckTwo = calculate.getInitial();
+    int yearcheck = calculate.getYears();
+
+
+    cout << "\n\n     Balance and interest with additional Monthly Deposites\n";
+    cout << "  ===========================================================\n";
+    cout << "    year    " << "year and balance       " << "Year and Earned Interest\n";
+    cout << "  ===========================================================\n";
 }
 
+
+
+
+int main() {
+    
+
+    userInput();
+
+    calculateall();
+
+    return 0;
+
+}
