@@ -9,7 +9,7 @@ I did a good job on the actual algorithm and implementing basic OOP concepts.
 
 Where could you enhance your code? How would these improvements make your code more efficient, secure, and so on?
 
-  I a major component I could implement would be input validation to enhance security and fault tolerance. I could also change my variable names so they are more descriptive.
+  A major component I could implement would be input validation to enhance security and fault tolerance. I could also change my variable names so they are more descriptive.
 Additionally, I could also change the visuals so it's easier for the user to understand what is being asked of them. Finally, I could make better in-line comments to improve readability.
 
 
