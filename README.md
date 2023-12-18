@@ -22,13 +22,13 @@ and got the original formula to work as an algorithm as intended. Throughout the
 
 What skills from this project will be particularly transferable to other projects or coursework?
 
-I learned a lot from this course, I'd say the biggest impact was understanding basic OOP concepts. This was touched on in Java but I still felt like was lacking
+  I learned a lot from this course, I'd say the biggest impact was understanding basic OOP concepts. This was touched on in Java but I still felt like was lacking
 an understanding of the basics. Additionally, it taught me some of the theoretical basics of data structures like maps, even simple programming constructs like
 nested loops and pointers, and overall just the fundamentals when learning to write simple algorithms.
 
 
 How did you make this program maintainable, readable, and adaptable?
 
-I used a lot of comments, especially when it came to the basic algorithm to calculate the monthly earned interest, I broke it down within the loop so that it's
+  I used a lot of comments, especially when it came to the basic algorithm to calculate the monthly earned interest, I broke it down within the loop so that it's
 easier to understand by someone looking over my code. I also spaced out the important parts of my code to ensure readability. Lastly, I kept it as simple as possible
 to make debugging less complex.
