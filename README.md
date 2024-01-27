@@ -1,4 +1,7 @@
 # INVESTMENT-FORECAST-VISUALIZER
+
+![image](https://github.com/JacobOsbrach/INVESTMENT-FORECAST-VISUALIZER/assets/154211082/6686f902-6774-4fe3-82d5-893f6038cf4c)
+
 The application displays static reports of year-end balances and year-end earned interest based on the user’s monthly deposits after having opened an account.
 
 
